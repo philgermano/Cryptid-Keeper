@@ -1,16 +1,34 @@
-const express = require('express')
-const app = express()
-
-const Cryptid = require('./models/cryptids.js/index.js.js') 
-
-const methodOverride = require('method-override')
+const express = require('express');
+const app = express();
+const Cryptid = require('./models/cryptids.js');
+require("dotenv").config();
+const methodOverride = require('method-override');
 const { render } = require('ejs');
+const session = require('express-session');
+
+
+
+const PORT = process.env.PORT||4000;
+//set the view engine to ejs
+app.set("view engine", "ejs");
+
+const SESSION_SECRET = process.env.SESSION_SECRET
+console.log('Here is the session secret')
+console.log(SESSION_SECRET)
+// now we can set up our session with our secret
+app.use(session({
+	secret: SESSION_SECRET,
+	resave: false, // https://www.npmjs.com/package/express-session#resave
+	saveUninitialized: false // https://www.npmjs.com/package/express-session#resave
+}))
 
 const mongoose = require('mongoose');
-//const { findByIdAndRemove } = require('./models/products.js');
-// Global Configuration
-const mongoURI = 'mongodb://localhost:27017/'+ 'products'
-const db = mongoose.connection
+const mongoURI = process.env.MONGODB_URI
+//     						ip addy:port/db name
+mongoose.connect(mongoURI);
+mongoose.connection.once('open', () => {
+	console.log('connected to mongo');
+});
 
 // Connect to Mongo
 mongoose.connect(mongoURI, () => {
@@ -20,17 +38,17 @@ mongoose.connect(mongoURI, () => {
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(methodOverride('_method'));
-const productController = require('./controllers/cryptidController.js')
 
+const cryptidController = require('./controllers/cryptidController.js')
 app.use('/cryptids', cryptidController)
 //for css file later
 app.use(express.static('public')) 
 
 //INDEX
-app.get('/cryptid', (req, res) => {
-    Cryptid.find({}, (error,products)=>{
+app.get('/cryptids', (req, res) => {
+    Cryptid.find({}, (error,cryptids)=>{
         //res.render('index.ejs', { cryptid: cryptid });
-        res.send(cryptid)    
+        res.send(cryptids)    
     })
 });
 
@@ -43,6 +61,6 @@ app.get('/cryptid', (req, res) => {
 //     })
 // });
 
-app.listen(3000,function(){
-    console.log('doing its thing')
-})
+app.listen(PORT, function () {
+	console.log(`App is live at http://localhost:${PORT}/`);
+});

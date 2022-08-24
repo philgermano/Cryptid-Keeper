@@ -6,8 +6,8 @@ const cryptidsSchema = new mongoose.Schema({
     description: String,
     image: String,
     region: String,
-    firstSightingYear: {type: Number, },
-    sightings: {type: Number, min: [1,'Must have at least 1 of the item to stock']},
+    firstYearSeen: Number,
+    sightings: Number,
     firstSightingLocation: String,
     tags: [String]
 	

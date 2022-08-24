@@ -1,6 +1,6 @@
 const express = require('express');
 const router=express.Router();
-const Cryptid = require('../models/cryptids.js/index.js.js')
+const Cryptid = require('../models/cryptids.js')
 
 // NEW
 router.get('/new', (req, res) => {
@@ -8,33 +8,21 @@ router.get('/new', (req, res) => {
 });
 
 //SEED
-//#region 
-//router.get('/seed', async (req, res) => {
+// //#region 
+// router.get('/seed', async (req, res) => {
 //     const newCryptid =
-//       [
-//         {
-//           name: 'Musical Jolly Chimp',
-//           description: 'A japanese toy from the 1950s-1970s. Something dies every time it claps its cymbals. ',
-//           img: 'https://i.imgur.com/TzQdUOs.jpg',
-//           price: 65,
-//           qty: 99
-//         }, {
-//           name: 'LeMarchand box',
-//           description: 'A puzzle box that opens a portal to hell when solved.',
-//           img: 'https://i.imgur.com/ocCNydT.jpg',
-//           price: 1987,
-//           qty: 207
-//         }, {
-//           name: '1958 Plymouth Fury',
-//           description: 'A 2-door automatic full-size sedan powered by a small block Wedge V8 motor.',
-//           img: 'https://i.imgur.com/ge4Chok.jpg',
-//           price: 3067,
-//           qty: 5303
-//         }
-//       ]
+// 		{name: "big foot", 
+// 		description:"A large bipedal ape man reportedly seen throughout North America. Some claim that they are interdimensional beings who only visit our world for short periods of time. They are believed to stand 8 to 10 feet tall and possess immense strength.", 
+// 		image:"https://i.imgur.com/TjGCSLV.jpg", 
+// 		region:"North America",
+// 		firstSightingLocation: "Bluff Creek, California", 
+// 		yearFirstSeen: 1967,
+// 		sightings: 10000,
+// 		tags: ["ape", "bipedal", "north america", "interdimensional"] 
+// 	}
   
 //     try {
-//       const seedItems = await Product.create(newProducts)
+//       const seedItems = await Cryptid.create(newCryptid)
 //       res.send(seedItems)
 //     } catch (err) {
 //       res.send(err.message)
