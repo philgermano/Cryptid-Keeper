@@ -1,0 +1,111 @@
+const express = require('express');
+const router=express.Router();
+const Cryptid = require('../models/cryptids.js/index.js.js')
+
+// NEW
+router.get('/new', (req, res) => {
+	res.render('new.ejs');
+});
+
+//SEED
+//#region 
+//router.get('/seed', async (req, res) => {
+//     const newCryptid =
+//       [
+//         {
+//           name: 'Musical Jolly Chimp',
+//           description: 'A japanese toy from the 1950s-1970s. Something dies every time it claps its cymbals. ',
+//           img: 'https://i.imgur.com/TzQdUOs.jpg',
+//           price: 65,
+//           qty: 99
+//         }, {
+//           name: 'LeMarchand box',
+//           description: 'A puzzle box that opens a portal to hell when solved.',
+//           img: 'https://i.imgur.com/ocCNydT.jpg',
+//           price: 1987,
+//           qty: 207
+//         }, {
+//           name: '1958 Plymouth Fury',
+//           description: 'A 2-door automatic full-size sedan powered by a small block Wedge V8 motor.',
+//           img: 'https://i.imgur.com/ge4Chok.jpg',
+//           price: 3067,
+//           qty: 5303
+//         }
+//       ]
+  
+//     try {
+//       const seedItems = await Product.create(newProducts)
+//       res.send(seedItems)
+//     } catch (err) {
+//       res.send(err.message)
+//     }
+//   })
+//#endregion
+
+//SHOW
+router.get('/:id', async (req,res)=>{
+    const cryptid = await Cryptid.findById(req.params.id);
+    res.render('show.ejs', {
+        cryptid: cryptid,
+    })
+})
+
+
+// CREATE
+router.post('/', (req, res) => {
+
+	let tagSplit =req.body.tags.replace(/ +/g, " ").split(" ");
+
+	const  cryptidToAdd = {
+		name: req.body.name,
+		description: req.body.description,
+        image: req.body.image,
+        region: req.body.region,
+        firstSightingYear: req.body.firstSightingYear,
+		region: req.body.region,
+		sightings: req.body.sightings,
+		tags: tagSplit,
+	};
+
+	Cryptid.create(req.body, (error, createdCryptid) =>{
+		if (error){
+			console.log("error", error);
+			res.send(error)
+		} else {
+			res.redirect('/cryptids')
+		}
+	})
+});
+
+// EDIT
+router.get('/:id/edit', (req, res) => {
+	Cryptid.findById(req.params.id, (err, foundCryptid) => {
+		res.render('edit.ejs', {cryptid: foundCryptid})
+	})
+})
+
+// BUY
+router.put('/:id/buy', (req, res) => {
+
+	Cryptid.findByIdAndUpdate(req.params.id, {$inc: {qty: -1}}, {new:true}, (err, updatedModel) => {
+		res.redirect('/cryptids')
+	})
+})
+
+// UPDATE
+router.put('/:id', (req, res) => {
+
+	Cryptid.findByIdAndUpdate(req.params.id, req.body, {new:true}, (err, updatedModel) => {
+		res.redirect('/cryptids/'+req.params.id)
+	})
+})
+
+// DESTROY
+router.delete('/:id', (req, res) => {
+	Cryptid.findByIdAndRemove(req.params.id, (err, data)=> {
+		if(err) console.log(err)
+		res.redirect('/cryptids')
+	})
+})
+
+  module.exports = router
