@@ -47,7 +47,7 @@ app.use(express.static('public'))
 //INDEX
 app.get('/cryptids', (req, res) => {
     Cryptid.find({}, (error,cryptids)=>{
-        res.render('index.ejs', { cryptid: cryptid });
+        res.render('index.ejs', { cryptids: cryptids });
         //res.send(cryptids)    
     })
 });
