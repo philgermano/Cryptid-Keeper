@@ -1,0 +1,44 @@
+<%- include('./partials/header.ejs') %>
+
+
+<form method="POST" action="/products">
+    <fieldset>
+      <label for="name">Name:</label>
+      <input id="name" type="text" name="name" placeholder="Name">
+    </fieldset>
+
+        <fieldset>
+            <label for="image">Image:</label>
+            <input id="image" type="text" name="image" placeholder="Image">
+          </fieldset>
+
+          <fieldset>
+            <label for="region">Region:</label>
+            <input id="region" type="text" name="Region" placeholder="Region"> 
+          </fieldset>
+
+   <fieldset>
+    <label for="firstYearSeen">Year of Discovery:</label>
+    <input id="firstYearSeen" type="number" name="firstYearSeen" placeholder="Year of Discovery">
+  </fieldset>
+
+            <fieldset>
+                <label for="firstSightingLocation">First Sighting:</label>
+                <input id="firstSightingLocation" type="text" name="firstSightingLocation" placeholder="First Sighting">
+              </fieldset>
+              
+              <fieldset>
+                <label for="sightings">Sightings:</label>
+                <input id="sightings" type="number" name="sightings" placeholder="Sightings">
+              </fieldset>
+              <fieldset>
+    
+    
+            <label for="description">Description:</label>
+            <input id="description" type="text" name="description" placeholder="Description">
+          </fieldset>
+          <button>Add the Cryptid</button>
+    </form>
+
+
+<%- include('./partials/footer.ejs') %>

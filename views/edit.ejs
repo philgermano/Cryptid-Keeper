@@ -1,0 +1,18 @@
+<%- include('./partials/header.ejs') %>
+
+<h1>Edit Cryptid Page</h1>
+    <form action="/cryptids/<%= cryptid.id %>?_method=PUT" method="POST">
+        Name: <input type="text" name="name" value="<%=cryptid.name%>"/>
+        Image: <input type="text" name="image" value="<%=cryptid.image %>"/>
+        Region: <input type="text" name="region" value="<%=cryptid.region %>"/>
+        Year of Discovery: <input type="number" name="firstYearSeen" value="<%=cryptid.firstYearSeen %>"/>
+        First Sighting: <input type="text" name="firstSightingLocation" value="<%=cryptid.firstSightingLocation %>"/>
+        Sightings: <input type="number" name="sightings" value="<%=cryptid.sightings %>"/>
+        Description: <input type="text" name="description" value="<%=cryptid.description %>"/>
+        <br>
+        <input type="submit" name="" value="Submit Changes"/>
+    </form>
+
+
+
+<%- include('./partials/footer.ejs') %>

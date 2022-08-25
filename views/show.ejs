@@ -1,0 +1,22 @@
+<%- include('./partials/header.ejs') %>
+<a href="/cryptids">Back</a>
+    <h1 ><%= cryptid.name %></h1>
+    <img id="show-img" src="<%= cryptid.image %>" alt="">
+    <table>  
+    <tr><th>Region:</th><th><%= cryptid.region %></th></tr>
+    <tr><th>Year of Discovery:</th><th><%= cryptid.yearFirstSeen %></th></tr>
+    <tr><th>First Sighting:</th><th><%= cryptid.firstSightingLocation %></th></tr>
+    <tr><th>Sightings(EST):</th><th><%= cryptid.sightings %></th></tr>
+    <tr><th>Info:</th><th><%= cryptid.description %></th></tr>
+</table>
+
+   </ul>
+      
+   <form action="/cryptids/<%=cryptid.id%>?_method=DELETE" method="POST">
+    <input type="submit" value="DELETE" />  
+  </form>
+  <a href="/cryptids/<%=cryptid.id%>/edit">
+<button>EDIT</button>
+
+    
+<%- include('./partials/footer.ejs') %>

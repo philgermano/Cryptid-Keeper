@@ -1,12 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    Wut up
-</body>
-</html>
+<%- include('./partials/header.ejs') %>
+    <h1>Cryptid Index</h1>
+
+    <ul>
+      <% for(let i = 0; i < cryptids.length; i++) {
+    
+      %>
+        <li>
+          <a href="/cryptids/<%= cryptids[i].id %>"> <%= cryptids[i].name %><br>
+          <img class="index-img" src="<%= cryptids[i].image %>" alt=""><br>
+           </a>
+  
+         </li>
+      <% } %>
+    </ul>
+
+
+    
+<%- include('./partials/footer.ejs') %>

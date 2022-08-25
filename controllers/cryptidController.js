@@ -49,7 +49,7 @@ router.post('/', (req, res) => {
 		description: req.body.description,
         image: req.body.image,
         region: req.body.region,
-        firstSightingYear: req.body.firstSightingYear,
+        yearFirstSeen: req.body.yearFirstSeen,
 		region: req.body.region,
 		sightings: req.body.sightings,
 		tags: tagSplit,

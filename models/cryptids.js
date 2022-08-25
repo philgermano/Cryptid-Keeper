@@ -6,7 +6,7 @@ const cryptidsSchema = new mongoose.Schema({
     description: String,
     image: String,
     region: String,
-    firstYearSeen: Number,
+    yearFirstSeen: Number,
     sightings: Number,
     firstSightingLocation: String,
     tags: [String]
