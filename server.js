@@ -44,6 +44,11 @@ app.use('/cryptids', cryptidController)
 //for css file later
 app.use(express.static('public')) 
 
+//HOME
+app.get("/", (req, res) => {
+	res.render("home");
+});
+
 //INDEX
 app.get('/cryptids', (req, res) => {
     Cryptid.find({}, (error,cryptids)=>{
