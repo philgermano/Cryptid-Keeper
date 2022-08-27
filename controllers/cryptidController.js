@@ -88,7 +88,7 @@ router.put('/:id/comment', (req, res) => {
 	Cryptid.findByIdAndUpdate(req.params.id, 
 		{$push:{"comment":{username:req.body.username, date: new Date, message:req.body.message}}}
 		, {new:true}, (err, updatedModel) => {
-		res.redirect('/cryptids/:id')
+			res.redirect('/cryptids/'+req.params.id)
 	})
 })
 
