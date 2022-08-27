@@ -36,6 +36,7 @@ router.get('/:id', async (req,res)=>{
     res.render('show.ejs', {
         cryptid: cryptid,
     })
+	//res.send(cryptid)
 })
 
 
@@ -72,19 +73,22 @@ router.get('/:id/edit', (req, res) => {
 	})
 })
 
-// BUY
-router.put('/:id/buy', (req, res) => {
-
-	Cryptid.findByIdAndUpdate(req.params.id, {$inc: {qty: -1}}, {new:true}, (err, updatedModel) => {
-		res.redirect('/cryptids')
-	})
-})
 
 // UPDATE
 router.put('/:id', (req, res) => {
 
 	Cryptid.findByIdAndUpdate(req.params.id, req.body, {new:true}, (err, updatedModel) => {
 		res.redirect('/cryptids/'+req.params.id)
+	})
+})
+
+//COMMENT
+router.put('/:id/comment', (req, res) => {
+
+	Cryptid.findByIdAndUpdate(req.params.id, 
+		{$push:{"comment":{username:req.body.username, date: new Date, message:req.body.message}}}
+		, {new:true}, (err, updatedModel) => {
+		res.redirect('/cryptids/:id')
 	})
 })
 

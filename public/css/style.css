@@ -2,7 +2,7 @@
     margin: 0 20vw 0 20vw;
     text-align: center; 
     background-color: ghostwhite;
-    height: 100vh;
+    height: 100%;
     width: 60vw;
     border:  solid #181818;
     border-width: 1px .5em;
@@ -16,7 +16,7 @@
 }
 
 body{
-    background-color: #181818;
+    background-color: darkcyan;
     width: 1200px;
 }
 

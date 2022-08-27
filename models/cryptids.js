@@ -9,7 +9,12 @@ const cryptidsSchema = new mongoose.Schema({
     yearFirstSeen: Number,
     sightings: Number,
     firstSightingLocation: String,
-    tags: [String]
+    tags: [String],
+    comment: [
+        {username:String,
+        date:Date,
+    message:String}
+    ]
 	
 });
 

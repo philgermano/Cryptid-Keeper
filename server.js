@@ -57,14 +57,6 @@ app.get('/cryptids', (req, res) => {
     })
 });
 
-//INDEX ADMIN has stuff like delete and junk
-//wold need to put the logon stuff in with restrictions and all that.
-// app.get('/productsadmin', (req, res) => {
-//     Product.find({}, (error,products)=>{
-//         res.render('indexadmin.ejs', { products: products });
-//         //res.send(products)    
-//     })
-// });
 
 app.listen(PORT, function () {
 	console.log(`App is live at http://localhost:${PORT}/`);

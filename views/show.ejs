@@ -8,15 +8,39 @@
     <tr><th>First Sighting:</th><th><%= cryptid.firstSightingLocation %></th></tr>
     <tr><th>Sightings(EST):</th><th><%= cryptid.sightings %></th></tr>
     <tr><th>Info:</th><th><%= cryptid.description %></th></tr>
+    <tr><th>Tags:</th><th><%   for(let i = 0; i < cryptid.tags.length; i++) { %> <%= cryptid.tags[i]  %>,<% } %></th></tr>
 </table>
-
    </ul>
-      
+
    <form action="/cryptids/<%=cryptid.id%>?_method=DELETE" method="POST">
     <input type="submit" value="DELETE" />  
   </form>
   <a href="/cryptids/<%=cryptid.id%>/edit">
-<button>EDIT</button>
+<button>EDIT</button></a>
 
-    
+<p id="comments">
+<h1>Comments:</h1>
+<form action="/cryptids/<%= cryptid.id %>/comment?_method=PUT" method="POST">
+  Username: <input type="text" name="username" value="username"/>
+  Message: <input type="text" name="message" value="Message"/>
+  <br>
+  <input type="submit" name="" value="Post Comment"/>
+</form>
+
+<ul>
+  <%   for(let i = 0; i < cryptid.comment.length; i++) {
+
+  %>
+    <li>
+      <%= cryptid.comment[i].username %><br> 
+       <%= cryptid.comment[i].message %><br>
+       <%= cryptid.comment[i].date %><br>
+       <br>
+       <br>
+</li>
+  <% } %>
+</ul>
+</p>  
+
+
 <%- include('./partials/footer.ejs') %>
