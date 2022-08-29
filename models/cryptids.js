@@ -15,7 +15,6 @@ const cryptidsSchema = new mongoose.Schema({
         date:Date,
     message:String}
     ]
-	
 });
 
 // CREATE MODEL  

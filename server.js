@@ -41,6 +41,10 @@ app.use(methodOverride('_method'));
 
 const cryptidController = require('./controllers/cryptidController.js')
 app.use('/cryptids', cryptidController)
+
+const userController = require('./controllers/userController.js')
+app.use('/users', userController)
+
 //for css file later
 app.use(express.static('public')) 
 
