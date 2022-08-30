@@ -1,3 +1,4 @@
+const { application } = require('express');
 const express = require('express');
 const router=express.Router();
 const Cryptid = require('../models/cryptids.js')
@@ -82,6 +83,13 @@ router.put('/:id', (req, res) => {
 	})
 })
 
+// APPROVE
+router.put('/:id/approve', (req, res) => {
+	Cryptid.findByIdAndUpdate(req.params.id, {$set: {approved: true}}, {new:true}, (err, updatedModel) => {
+		res.redirect('/cryptids')
+	})
+})
+
 //COMMENT
 router.put('/:id/comment', (req, res) => {
 
@@ -99,5 +107,20 @@ router.delete('/:id', (req, res) => {
 		res.redirect('/cryptids')
 	})
 })
+
+//SEARCH
+router.get('/search', (req,res)=>{
+	try {  
+		bookModel.find({$or:[{tags:{'$regex':req.body.search}}]},(err,foundEntries)=>{  
+		if(err){  
+		console.log(err);  
+		}else{  
+		res.render('/results.ejs',{foundEntries:foundEntries});  
+		}  
+		})  
+		} catch (error) {  
+		console.log(error);  
+		}  
+});		
 
   module.exports = router

@@ -62,6 +62,15 @@ app.get('/cryptids', (req, res) => {
 });
 
 
+//INDEX
+app.get('/cryptidsadmin', (req, res) => {
+    Cryptid.find({approved:false}, (error,cryptids)=>{
+        res.render('index.ejs', { cryptids: cryptids });
+        //res.send(cryptids)    
+    })
+});
+
+
 app.listen(PORT, function () {
 	console.log(`App is live at http://localhost:${PORT}/`);
 });

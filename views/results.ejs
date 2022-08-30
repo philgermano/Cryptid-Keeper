@@ -1,0 +1,19 @@
+<%- include('./partials/header.ejs') %>
+    <h1>Search Index</h1>
+
+    <ul>
+      <% for(let i = 0; i < foundEntries.length; i++) {
+    
+      %>
+        <li>
+          <a href="/cryptids/<%= foundEntries[i].id %>"> <%= foundEntries[i].name %><br>
+          <img class="index-img" src="<%= foundEntries[i].image %>" alt=""><br>
+           </a>
+  
+         </li>
+      <% } %>
+    </ul>
+
+
+    
+<%- include('./partials/footer.ejs') %>

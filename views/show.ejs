@@ -18,6 +18,10 @@
   <a href="/cryptids/<%=cryptid.id%>/edit">
 <button>EDIT</button></a>
 
+<% if  (cryptid.approved === false){ %> <form action="/cryptids/<%= cryptid.id %>/approve?_method=PUT" method="POST">
+  <input id="approvalButton"  type="submit" value="Approve" %>
+  <% } %>
+
 <p id="comments">
 <h1>Comments:</h1>
 <form action="/cryptids/<%= cryptid.id %>/comment?_method=PUT" method="POST">
@@ -40,7 +44,7 @@
 </li>
   <% } %>
 </ul>
-</p>  
+</p> 
 
 
 <%- include('./partials/footer.ejs') %>
