@@ -55,7 +55,7 @@ app.get("/", (req, res) => {
 
 //INDEX
 app.get('/cryptids', (req, res) => {
-    Cryptid.find({}, (error,cryptids)=>{
+    Cryptid.find({approved:true}, (error,cryptids)=>{
         res.render('index.ejs', { cryptids: cryptids });
         //res.send(cryptids)    
     })

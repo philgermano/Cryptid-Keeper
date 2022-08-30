@@ -14,7 +14,8 @@ const cryptidsSchema = new mongoose.Schema({
         {username:String,
         date:Date,
     message:String}
-    ]
+    ],
+    approved:{ type:Boolean , default: false}
 });
 
 // CREATE MODEL  
