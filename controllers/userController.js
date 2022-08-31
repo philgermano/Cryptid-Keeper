@@ -42,6 +42,7 @@ router.post('/register', (req, res) => {
       if (foundUser) {
         const validLogin = bcrypt.compareSync(req.body.password, foundUser.password)
         if (validLogin) {
+          console.log("logged in", foundUser);
           req.session.currentUser = foundUser
           res.redirect('/cryptids')
         } else {

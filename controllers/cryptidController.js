@@ -3,6 +3,14 @@ const express = require('express');
 const router=express.Router();
 const Cryptid = require('../models/cryptids.js')
 
+const authRequired = (req, res, next) => {
+	if(req.session.currentUser.admin === true){
+		next()
+	} else {
+		res.redirect('signing.ejs')
+	}
+}
+
 // NEW
 router.get('/new', (req, res) => {
 	res.render('new.ejs');
@@ -63,7 +71,7 @@ router.get('/:id', async (req,res)=>{
 router.post('/', (req, res) => {
 	// let tagsLower = req.body.tags.toLowerCase();
 	// console.log(tagsLower,"tags lower");
-	let tagSplit =req.body.tags.replace(/ +/g, " ").split(" ");
+	let tagSplit =req.body.tags.replace(/ +/g, " ").split(", ");
 	// console.log(tagSplit,"tags split");
 	// console.log(typeof req.body.tags)
 	// console.log(typeof tagSplit)  
@@ -114,16 +122,22 @@ router.put('/:id/approve', (req, res) => {
 
 //COMMENT
 router.put('/:id/comment', (req, res) => {
-
+let name = null;
+	if (req.session.currentUser){
+		 name = req.session.currentUser.username
+	}else {
+		 name = "Anonymous";
+	};
+	
 	Cryptid.findByIdAndUpdate(req.params.id, 
-		{$push:{"comment":{username:req.body.username, date: new Date, message:req.body.message}}}
+		{$push:{"comment":{username:name, date: new Date, message:req.body.message}}}
 		, {new:true}, (err, updatedModel) => {
 			res.redirect('/cryptids/'+req.params.id)
 	})
 })
 
 // DESTROY
-router.delete('/:id', (req, res) => {
+router.delete('/:id', authRequired, (req, res) => {
 	Cryptid.findByIdAndRemove(req.params.id, (err, data)=> {
 		if(err) console.log(err)
 		res.redirect('/cryptids')

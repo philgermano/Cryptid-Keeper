@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const Cryptid = require('./models/cryptids.js');
+const User = require('./models/users.js')
 require("dotenv").config();
 const methodOverride = require('method-override');
 const { render } = require('ejs');
@@ -48,6 +49,14 @@ app.use('/users', userController)
 //for css file later
 app.use(express.static('public')) 
 
+const authRequired = (req, res, next) => {
+	if(req.session.currentUser.admin === true){
+		next()
+	} else {
+		res.send('Restricted Access. Insufficent User Status.')
+	}
+}
+
 //HOME
 app.get("/", (req, res) => {
 	res.render("home");
@@ -55,6 +64,7 @@ app.get("/", (req, res) => {
 
 //INDEX
 app.get('/cryptids', (req, res) => {
+	user: req.session.currentUser;
     Cryptid.find({approved:true}, (error,cryptids)=>{
         res.render('index.ejs', { cryptids: cryptids });
         //res.send(cryptids)    
@@ -62,14 +72,19 @@ app.get('/cryptids', (req, res) => {
 });
 
 
-//INDEX
+//INDEXADMIN
 app.get('/cryptidsadmin', (req, res) => {
-    Cryptid.find({approved:false}, (error,cryptids)=>{
-        res.render('index.ejs', { cryptids: cryptids });
-        //res.send(cryptids)    
-    })
-});
+	if(req.session.currentUser.admin === true){
+		Cryptid.find({approved:false}, (error,cryptids)=>{
+			res.render('index.ejs', { cryptids: cryptids });
+			//res.send(cryptids)  
+			//console.log(error);
+		})
+	} else {
+		res.send('Restricted Access. Insufficent User Status.')
+	}
 
+});
 
 app.listen(PORT, function () {
 	console.log(`App is live at http://localhost:${PORT}/`);

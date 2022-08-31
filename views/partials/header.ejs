@@ -14,10 +14,14 @@
       <p >Cryptid Keeper</p>
       <a href="/cryptids">Cryptid Directory</a>
       <a href="/cryptids/new">New Entry</a>
-      <a href="/users/register">Register</a>
+       <a href="/users/register">Register</a>
       |
-      <a href="/users/signin">Signin</a>
-      |
-      <a href="/users/signout">Signout</a>
-    </nav>
+      <a href="/users/signin">Sign in</a> | <a href="/users/signout">Signout</a>
+    
+      <div id="search">
+        <form action="/cryptids/search" method="get">
+            <input type="text" placeholder="Search.." name="search">
+            <button type="submit">Submit</button>
+        </form>
+        </div></nav>
     <div id="center">
