@@ -74,16 +74,17 @@ app.get('/cryptids', (req, res) => {
 
 //INDEXADMIN
 app.get('/cryptidsadmin', (req, res) => {
-	if(req.session.currentUser.admin === true){
+	if(req.session.currentUser){
+		if(req.session.currentUser.admin === true){
 		Cryptid.find({approved:false}, (error,cryptids)=>{
 			res.render('index.ejs', { cryptids: cryptids });
 			//res.send(cryptids)  
 			//console.log(error);
 		})
-	} else {
-		res.redirect('users/signin.ejs')
+	}} else{
+		res.redirect('/users/signin')
+	
 	}
-
 });
 
 app.listen(PORT, function () {

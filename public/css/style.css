@@ -57,6 +57,7 @@ a:hover{
     height: 30vh;
     border: 5px solid #181818;
     border-bottom: 2.5px;
+    object-fit: cover;
 }
 
 

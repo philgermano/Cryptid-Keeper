@@ -4,10 +4,11 @@ const router=express.Router();
 const Cryptid = require('../models/cryptids.js')
 
 const authRequired = (req, res, next) => {
-	if(req.session.currentUser.admin === true){
+	if(req.session.currentUser){
+		if(req.session.currentUser.admin === true){
 		next()
-	} else {
-		res.redirect('users/signin.ejs')
+	}} else {
+		res.redirect('/users/signin')
 	}
 }
 
