@@ -8,7 +8,9 @@
     border:  solid #181818;
     border-width: 1px .5em;
     background-image: url("../images/paisley_grid_tiled_black_and_green_6e204f45-2f52-459a-a1d1-9b3e531b3c81.png.png");
-  background-repeat: repeat;
+  background-repeat: no-repeat;
+  background-size: cover;
+
   display: flex;
   flex-direction: column;
 }

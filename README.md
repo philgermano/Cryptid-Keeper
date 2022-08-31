@@ -17,6 +17,7 @@ Better CSS Styling<br />
 Sub pages for individual posts by users that are shown on the entries page with their own discussion section.<br /> 
 
 
+
 ## Wireframes > Wireframes with basic page layouts<br /> 
 ![wire frame of project](./public/images/27f45554-4a1b-4627-8f62-52012c1590c1.png
 )
