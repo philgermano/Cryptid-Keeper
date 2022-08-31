@@ -81,7 +81,7 @@ app.get('/cryptidsadmin', (req, res) => {
 			//console.log(error);
 		})
 	} else {
-		res.redirect()
+		res.redirect('users/signin.ejs')
 	}
 
 });
