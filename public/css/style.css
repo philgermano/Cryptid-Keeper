@@ -192,3 +192,9 @@ margin-top: 5vh;
     margin-right: 0px;
     float: right;
 }
+
+#navHead{
+  color: ghostwhite;
+  font-size: 50px;
+  font-family: 'Oleo Script', cursive;
+}
