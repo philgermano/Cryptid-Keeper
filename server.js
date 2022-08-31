@@ -59,7 +59,7 @@ const authRequired = (req, res, next) => {
 
 //HOME
 app.get("/", (req, res) => {
-	res.render("home");
+	res.redirect('/cryptids')
 });
 
 //INDEX
