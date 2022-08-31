@@ -12,6 +12,7 @@
   background-size: cover;
   display: flex;
   flex-direction: column;
+  flex-wrap: wrap;
 }
 nav{
     min-height: 100%;
