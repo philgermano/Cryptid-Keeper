@@ -8,6 +8,24 @@ router.get('/new', (req, res) => {
 	res.render('new.ejs');
 });
 
+//SEARCH
+router.get('/search', (req,res)=>{
+	try {  
+		Cryptid.find({$or:[{tags:{$in:req.query.search.toLowerCase()}},{name:req.query.search}], approved:true},(err,foundEntries)=>{ 
+		// console.log('in search');
+		// res.send(foundEntries)
+		//res.send(foundEntries)
+		if(err){  
+		console.log(err);  
+		}else{  
+		res.render('results.ejs',{foundEntries:foundEntries});  
+		}  
+		})  
+		} catch (error) {  
+		console.log(error);  
+		}  
+});		
+
 //SEED
 // //#region 
 // router.get('/seed', async (req, res) => {
@@ -43,21 +61,25 @@ router.get('/:id', async (req,res)=>{
 
 // CREATE
 router.post('/', (req, res) => {
-
+	// let tagsLower = req.body.tags.toLowerCase();
+	// console.log(tagsLower,"tags lower");
 	let tagSplit =req.body.tags.replace(/ +/g, " ").split(" ");
-
+	// console.log(tagSplit,"tags split");
+	// console.log(typeof req.body.tags)
+	// console.log(typeof tagSplit)  
 	const  cryptidToAdd = {
 		name: req.body.name,
 		description: req.body.description,
         image: req.body.image,
         region: req.body.region,
         yearFirstSeen: req.body.yearFirstSeen,
-		region: req.body.region,
 		sightings: req.body.sightings,
+		firstSightingLocation:req.body.firstSightingLocation,
 		tags: tagSplit,
 	};
+	//console.log(tagSplit);
 
-	Cryptid.create(req.body, (error, createdCryptid) =>{
+	Cryptid.create(cryptidToAdd, (error, createdCryptid) =>{
 		if (error){
 			console.log("error", error);
 			res.send(error)
@@ -86,7 +108,7 @@ router.put('/:id', (req, res) => {
 // APPROVE
 router.put('/:id/approve', (req, res) => {
 	Cryptid.findByIdAndUpdate(req.params.id, {$set: {approved: true}}, {new:true}, (err, updatedModel) => {
-		res.redirect('/cryptids')
+		res.redirect('/cryptidsadmin')
 	})
 })
 
@@ -108,19 +130,6 @@ router.delete('/:id', (req, res) => {
 	})
 })
 
-//SEARCH
-router.get('/search', (req,res)=>{
-	try {  
-		bookModel.find({$or:[{tags:{'$regex':req.body.search}}]},(err,foundEntries)=>{  
-		if(err){  
-		console.log(err);  
-		}else{  
-		res.render('/results.ejs',{foundEntries:foundEntries});  
-		}  
-		})  
-		} catch (error) {  
-		console.log(error);  
-		}  
-});		
+
 
   module.exports = router
