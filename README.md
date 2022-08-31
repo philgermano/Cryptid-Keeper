@@ -2,13 +2,14 @@ Cryptid Keeper
 https://cryptid-keeper.herokuapp.com/
 
 
-A express app for hosting details of paranormal encounters/entities and commenting on them. People can create new entries and they will be displayed on approved by a user with admin permissions. Users can register and the comments will autofill their name. Otherwise it will default to anonmyous. The app has a search bar and will query by either name or tags. <br /> 
+A express app for hosting details of paranormal encounters/entities and commenting on them. People can create new entries and they will be displayed on approval by a user with admin permissions. Users can register and the comments will autofill their name. Otherwise it will default to anonmyous. The app has a search bar and will query by either name or tags. <br /> 
 <br /> 
 The app has full CRUD functionality. It was built using Node.js, Mongoose, Express, and EJS.
 <br /> 
 <br /> 
-Unsolved Problems
-Having certain elements only appear to logged on users. I spent a decent a fair bit trying out different methods before I ditched it to focus on more important things.<br /> 
+Unsolved Problems<br /> 
+Having certain elements only appear to logged on users. I spent a fair bit trying out different methods before I ditched it to focus on more important things.<br /> 
+
 
 
 
