@@ -139,7 +139,7 @@ margin-top: 5vh;
       }
 #commentHead{
         color: #181818;
-        font-size: 55px;
+        font-size: 44px;
         border: 5px solid #181818;
         background-color: ghostwhite;
         width: fit-content;
@@ -203,4 +203,11 @@ margin-top: 5vh;
   color: ghostwhite;
   font-size: 50px;
   font-family: 'Oleo Script', cursive;
+}
+
+#commentContain{
+  height:224px;
+  width: 50%;
+  overflow:auto;
+   align-self: center;
 }

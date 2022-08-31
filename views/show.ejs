@@ -22,7 +22,7 @@
  <input type="text" name="message"/>
   <input type="submit" class="button" name="" value="Post Comment"/>
 </form>
-
+<div id="commentContain">
 <ul id="comments">
   <%   for(let i = 0; i < cryptid.comment.length; i++) {
 
@@ -30,12 +30,13 @@
     <li id="comment">
       <%= cryptid.comment[i].username %><br> 
        <%= cryptid.comment[i].message %><br>
-       <%= cryptid.comment[i].date %><br>
+        <%= cryptid.comment[i].date %><br>
        <br>
        <br>
 </li>
   <% } %>
 </ul>
+</div>
 </p> 
 <span id="bottomButtons">
   <% if  (cryptid.approved === false){ %> <form action="/cryptids/<%= cryptid.id %>/approve?_method=PUT" method="POST">
