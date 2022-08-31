@@ -1,7 +1,7 @@
 <%- include('./partials/header.ejs') %>
-    <h1 id="showName"><%= cryptid.name %></h1>
+    <h1 class="head"><%= cryptid.name %></h1>
     <div id="showTop"> <img id="show-img" src="<%= cryptid.image %>" alt="">
-    <table>  
+    <table id="tableTop">  
     <tr><th>Region:</th><th><%= cryptid.region %></th></tr>
     <tr><th>Year of Discovery:</th><th><%= cryptid.yearFirstSeen %></th></tr>
     <tr><th>First Sighting:</th><th><%= cryptid.firstSightingLocation %></th></tr>
@@ -9,7 +9,7 @@
 </table>
    </div>
 <div id="showBot">
-   <table>  
+   <table id="tableBottom">  
     <tr><th class="info">Info:</th><th class="info"><%= cryptid.description %></th></tr>
     <tr><th>Tags:</th><th><%   for(let i = 0; i < cryptid.tags.length; i++) { %> <%= cryptid.tags[i]  %>,<% } %></th></tr>
 </table>
@@ -23,7 +23,7 @@
 <p id="comments">
 <h1 id="commentHead">Comments:</h1>
 <form id="commentField" action="/cryptids/<%= cryptid.id %>/comment?_method=PUT" method="POST">
- <input type="text" name="message" value="Message"/>
+ <input type="text" name="message"/>
   <input type="submit" class="button" name="" value="Post Comment"/>
 </form>
 

@@ -1,18 +1,16 @@
 <%- include('./partials/header.ejs') %>
-
-<h1>Edit Cryptid Page</h1>
-    <form action="/cryptids/<%= cryptid.id %>?_method=PUT" method="POST">
-        Name: <input type="text" name="name" value="<%=cryptid.name%>"/>
-        Image: <input type="text" name="image" value="<%=cryptid.image %>"/>
-        Region: <input type="text" name="region" value="<%=cryptid.region %>"/>
-        Year of Discovery: <input type="number" name="yearFirstSeen" value="<%=cryptid.yearFirstSeen %>"/>
-        First Sighting: <input type="text" name="firstSightingLocation" value="<%=cryptid.firstSightingLocation %>"/>
-        Sightings: <input type="number" name="sightings" value="<%=cryptid.sightings %>"/>
-        Description: <input type="text" name="description" value="<%=cryptid.description %>"/>
+<h1 class="head">Edit Cryptid Page</h1>
+    <form id="editForm" class="cryptidForm" action="/cryptids/<%= cryptid.id %>?_method=PUT" method="POST">
+        Name: <input class="edit" type="text" name="name" value="<%=cryptid.name%>"/></br>
+        Image: <input <input class="edit"  type="text" name="image" value="<%=cryptid.image %>"/></br>
+        Region: <input <input class="edit"  type="text" name="region" value="<%=cryptid.region %>"/></br>
+        Year of Discovery: <input <input class="edit"  type="number" name="yearFirstSeen" value="<%=cryptid.yearFirstSeen %>"/></br>
+        First Sighting: <input <input class="edit"  type="text" name="firstSightingLocation" value="<%=cryptid.firstSightingLocation %>"/></br>
+        Sightings: <input <input class="edit"  type="number" name="sightings" value="<%=cryptid.sightings %>"/></br>
+        Description: <textarea <input class="edit"  type="text" class="infoForm" name="description" value="<%=cryptid.description %>"><%=cryptid.description %></textarea>
         <br>
         <input type="submit" name="" value="Submit Changes"/>
     </form>
-
 
 
 <%- include('./partials/footer.ejs') %>

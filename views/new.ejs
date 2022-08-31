@@ -1,45 +1,45 @@
 <%- include('./partials/header.ejs') %>
 
 
-<form method="POST" action="/cryptids">
+<form class="cryptidForm" method="POST" action="/cryptids">
     <fieldset>
       <label for="name">Name:</label>
-      <input id="name" type="text" name="name" placeholder="Name">
+      <input class="new" id="name" type="text" name="name" placeholder="Name">
     </fieldset>
 
         <fieldset>
             <label for="image">Image:</label>
-            <input id="image" type="text" name="image" placeholder="Image">
+            <input class="new" id="image" type="text" name="image" placeholder="Image">
           </fieldset>
 
           <fieldset>
             <label for="region">Region:</label>
-            <input id="region" type="text" name="region" placeholder="Region"> 
+            <input class="new" id="region" type="text" name="region" placeholder="Region"> 
           </fieldset>
 
    <fieldset>
     <label for="yearFirstSeen">Year of Discovery:</label>
-    <input id="yearFirstSeen" type="number" name="yearFirstSeen" placeholder="Year of Discovery">
+    <input class="new" id="yearFirstSeen" type="number" name="yearFirstSeen" placeholder="Year of Discovery">
   </fieldset>
 
             <fieldset>
                 <label for="firstSightingLocation">First Sighting:</label>
-                <input id="firstSightingLocation" type="text" name="firstSightingLocation" placeholder="First Sighting">
+                <input class="new" id="firstSightingLocation" type="text" name="firstSightingLocation" placeholder="First Sighting">
               </fieldset>
               
               <fieldset>
                 <label for="sightings">Sightings:</label>
-                <input id="sightings" type="number" name="sightings" placeholder="Sightings">
+                <input class="new" id="sightings" type="number" name="sightings" placeholder="Sightings">
               </fieldset>
               
               <fieldset>
             <label for="description">Description:</label>
-            <input id="description" type="text" name="description" placeholder="Description">
+            <textarea class="infoForm new" id="description" type="text" name="description" placeholder="Description"></textarea>
           </fieldset>
 
           <fieldset>
             <label for="tags">Tags:</label>
-            <input id="tags" type="text" name="tags" placeholder="tags">
+            <input class="new" id="tags" type="text" name="tags" placeholder="tags">
           </fieldset>
           <button>Add the Cryptid</button>
     </form>

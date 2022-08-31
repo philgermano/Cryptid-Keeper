@@ -5,8 +5,9 @@
     
       %>
         <li>
-          <a href="/cryptids/<%= cryptids[i].id %>"> <%= cryptids[i].name %><br>
-          <img class="index-img" src="<%= cryptids[i].image %>" alt=""><br>
+          <a class="head" href="/cryptids/<%= cryptids[i].id %>"> <%= cryptids[i].name %><br></a>
+  
+            <a href="/cryptids/<%= cryptids[i].id %>"><img class="index-img" src="<%= cryptids[i].image %>" alt=""><br>
            </a>
   
          </li>
