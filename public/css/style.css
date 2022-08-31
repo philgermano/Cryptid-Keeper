@@ -1,23 +1,37 @@
 #center{
-    margin: 0 20vw 0 20vw;
+    margin: 0 0 0 10vw;
     text-align: center; 
-    background-color: ghostwhite;
     height: 100%;
-    width: 60vw;
+    width: 90%;
+    min-height: 1000px;
+    max-width: 1000px;
     border:  solid #181818;
     border-width: 1px .5em;
+    background-image: url("../images/paisley_grid_tiled_black_and_green_6e204f45-2f52-459a-a1d1-9b3e531b3c81.png.png");
+  background-repeat: repeat;
+  display: flex;
+  flex-direction: column;
 }
-
+nav{
+    min-height: 100%;
+    max-width: 10%;
+    display: flex;
+    flex-direction: column;
+}
 .index-img{
     max-width: 14vw;
-    border: 2px solid #181818;
-    border-radius: 30px;
+    min-height: 14vw;
+    border: 10px solid #181818;
     margin: 20px;
 }
 
 body{
-    background-color: darkcyan;
-    width: 1200px;
+    background-color:  #232B2B;
+    display: flex;
+    flex-direction: row;
+width: 100%;
+color: ghostwhite;
+margin: 20px 20px 20px 20px;
 }
 
 ul{
@@ -28,10 +42,21 @@ ul{
     
 }
 
+a{
+    text-decoration: none;
+    color: ghostwhite;
+    font-size: 30px;
+    font-family: 'Oleo Script', cursive;
+}
+a:hover{
+    color:dimgray;
+}
+
 #show-img{
-    max-width: 400px;
-    border: 2px solid #181818;
-    border-radius: 30px;
+    max-width: 40vw;
+    max-height: 40vh;
+    border: 5px solid #181818;
+    border-bottom: 2.5px;
 }
 
 
@@ -41,17 +66,90 @@ li{
 
 table{
     margin:auto;
-    margin-top: 5vh;
-    margin-bottom: 5vh;
+    border: 5px solid #181818;
+    border-bottom: 2.5px;
+    
 }
 table, th, td {
-    border: 2px solid;
-    font-size: 30px;
+    color: #181818;
+    font-size: 20px;
     font-family: 'Oleo Script', cursive;
-    border-radius: 30px;
     border-collapse: collapse;
+    background-color: ghostwhite;
+  }
+
+  th, td {
+    color: #181818;
+    border: 2px solid;
+    font-size: 20px;
+    font-family: 'Oleo Script', cursive;
+    border-collapse: collapse;
+    background-color: ghostwhite;
   }
  
   th{
  padding: 10px;
   }
+
+  #showTop{
+display: flex;
+max-width: 600px;
+min-width: 90%;
+margin-top: 5vh;
+  }
+
+  #showBot{
+    height: 30%;
+  }
+  .info{
+    height: 20vh;
+  }
+  
+  #showName{
+    color: #181818;
+    font-size: 55px;
+    border: 5px solid #181818;
+    background-color: ghostwhite;
+    width: fit-content;
+    align-self: center;
+  }
+
+  #comments{
+    display: block;
+    align-self:center;
+  }
+  
+  #comment{
+        color: #181818;
+        font-size: 20px;
+        border: 5px solid #181818;
+        background-color: ghostwhite;
+        align-self: center;
+        height:  10vh;
+        border-bottom: 2.5px;
+      }
+#commentHead{
+        color: #181818;
+        font-size: 55px;
+        border: 5px solid #181818;
+        background-color: ghostwhite;
+        width: fit-content;
+        align-self: center;
+        padding: 10px;
+      }
+
+#bottomButtons{
+    display: flex;
+    flex-direction: row;
+    align-self:center;
+    width: 10vw;
+    background-color: #181818;
+    color: ghostwhite;
+    font-size: 30px;
+    font-weight: 500;
+    font-family: 'Kaushan Script', cursive;
+}      
+
+.button:hover{
+    background-color: lightgray;
+}

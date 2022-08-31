@@ -1,40 +1,37 @@
 <%- include('./partials/header.ejs') %>
-<a href="/cryptids">Back</a>
-    <h1 ><%= cryptid.name %></h1>
-    <img id="show-img" src="<%= cryptid.image %>" alt="">
+    <h1 id="showName"><%= cryptid.name %></h1>
+    <div id="showTop"> <img id="show-img" src="<%= cryptid.image %>" alt="">
     <table>  
     <tr><th>Region:</th><th><%= cryptid.region %></th></tr>
     <tr><th>Year of Discovery:</th><th><%= cryptid.yearFirstSeen %></th></tr>
     <tr><th>First Sighting:</th><th><%= cryptid.firstSightingLocation %></th></tr>
     <tr><th>Sightings(EST):</th><th><%= cryptid.sightings %></th></tr>
-    <tr><th>Info:</th><th><%= cryptid.description %></th></tr>
+</table>
+   </div>
+<div id="showBot">
+   <table>  
+    <tr><th class="info">Info:</th><th class="info"><%= cryptid.description %></th></tr>
     <tr><th>Tags:</th><th><%   for(let i = 0; i < cryptid.tags.length; i++) { %> <%= cryptid.tags[i]  %>,<% } %></th></tr>
 </table>
-   </ul>
+</div>
 
-   <form action="/cryptids/<%=cryptid.id%>?_method=DELETE" method="POST">
-    <input type="submit" value="DELETE" />  
-  </form>
-  <a href="/cryptids/<%=cryptid.id%>/edit">
-<button>EDIT</button></a>
 
 <% if  (cryptid.approved === false){ %> <form action="/cryptids/<%= cryptid.id %>/approve?_method=PUT" method="POST">
   <input id="approvalButton"  type="submit" value="Approve" %>
   <% } %>
 
 <p id="comments">
-<h1>Comments:</h1>
-<form action="/cryptids/<%= cryptid.id %>/comment?_method=PUT" method="POST">
-  Message: <input type="text" name="message" value="Message"/>
-  <br>
-  <input type="submit" name="" value="Post Comment"/>
+<h1 id="commentHead">Comments:</h1>
+<form id="commentField" action="/cryptids/<%= cryptid.id %>/comment?_method=PUT" method="POST">
+ <input type="text" name="message" value="Message"/>
+  <input type="submit" class="button" name="" value="Post Comment"/>
 </form>
 
-<ul>
+<ul id="comments">
   <%   for(let i = 0; i < cryptid.comment.length; i++) {
 
   %>
-    <li>
+    <li id="comment">
       <%= cryptid.comment[i].username %><br> 
        <%= cryptid.comment[i].message %><br>
        <%= cryptid.comment[i].date %><br>
@@ -44,6 +41,9 @@
   <% } %>
 </ul>
 </p> 
-
-
+<span id="bottomButtons">
+<form action="/cryptids/<%=cryptid.id%>?_method=DELETE" method="POST"><input type="submit" class="button" value="DELETE" /></form>
+   <a href="/cryptids/<%=cryptid.id%>/edit">
+<button class="button">EDIT</button></a>
+</span>
 <%- include('./partials/footer.ejs') %>
