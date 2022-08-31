@@ -7,7 +7,7 @@ const authRequired = (req, res, next) => {
 	if(req.session.currentUser.admin === true){
 		next()
 	} else {
-		res.redirect('signing.ejs')
+		res.redirect('signin.ejs')
 	}
 }
 

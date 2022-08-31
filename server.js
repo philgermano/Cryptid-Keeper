@@ -81,7 +81,7 @@ app.get('/cryptidsadmin', (req, res) => {
 			//console.log(error);
 		})
 	} else {
-		res.send('Restricted Access. Insufficent User Status.')
+		res.redirect()
 	}
 
 });
