@@ -16,10 +16,6 @@
 </div>
 
 
-<% if  (cryptid.approved === false){ %> <form action="/cryptids/<%= cryptid.id %>/approve?_method=PUT" method="POST">
-  <input id="approvalButton"  type="submit" value="Approve" %>
-  <% } %>
-
 <p id="comments">
 <h1 id="commentHead">Comments:</h1>
 <form id="commentField" action="/cryptids/<%= cryptid.id %>/comment?_method=PUT" method="POST">
@@ -42,6 +38,9 @@
 </ul>
 </p> 
 <span id="bottomButtons">
+  <% if  (cryptid.approved === false){ %> <form action="/cryptids/<%= cryptid.id %>/approve?_method=PUT" method="POST">
+  <input id="approvalButton"  type="submit" value="APPROVE" %>
+  <% } %>
 <form action="/cryptids/<%=cryptid.id%>?_method=DELETE" method="POST"><input type="submit" class="button" value="DELETE" /></form>
    <a href="/cryptids/<%=cryptid.id%>/edit">
 <button class="button">EDIT</button></a>

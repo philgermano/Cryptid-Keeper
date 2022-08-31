@@ -119,6 +119,8 @@ margin-top: 5vh;
     width: fit-content;
     align-self: center;
     margin-top: 10px;
+    padding: 0px 5px 0px 5px;
+    font-family: 'Oleo Script', cursive;
   }
 
   #comments{
@@ -143,18 +145,17 @@ margin-top: 5vh;
         width: fit-content;
         align-self: center;
         padding: 10px;
+        font-family: 'Oleo Script', cursive;
       }
 
 #bottomButtons{
     display: flex;
     flex-direction: row;
     align-self:center;
-    width: 10vw;
-    background-color: #181818;
     color: ghostwhite;
     font-size: 30px;
     font-weight: 500;
-    font-family: 'Kaushan Script', cursive;
+    font-family: 'Oleo Script', cursive;
 }      
 
 .button:hover{
