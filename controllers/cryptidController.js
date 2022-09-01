@@ -22,7 +22,7 @@ router.get('/search', (req,res)=>{
 	try {  
 		Cryptid.find({$or:[{tags:{$in:req.query.search.toLowerCase()}},{name:req.query.search}], approved:true},(err,foundEntries)=>{ 
 		// console.log('in search');
-		// res.send(foundEntries)
+		// res.send(found∏Entries)
 		//res.send(foundEntries)
 		if(err){  
 		console.log(err);  
